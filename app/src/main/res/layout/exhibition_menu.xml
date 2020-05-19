@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ExhibitionMenu">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -18,6 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="지역별 전시회"
+        android:clickable="true"
+        android:onClick="onClick"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/date_exhibition"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -28,6 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="날짜별 전시회"
+        android:clickable="true"
+        android:onClick="onClick"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
@@ -40,6 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
         android:text="추천 전시회"
+        android:clickable="true"
+        android:onClick="onClick"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/date_exhibition" />
@@ -49,6 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="게시판"
+        android:clickable="true"
+        android:onClick="onClick"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
