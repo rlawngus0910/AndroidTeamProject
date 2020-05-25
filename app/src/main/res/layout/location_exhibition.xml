@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/location_tabs"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="166dp"
-        android:layout_marginTop="222dp"
-        android:text="지역별 전시회 화면"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:tabGravity="center"
+        app:tabMode="fixed">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/seoul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서울" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/gyunggi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경기" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/chungch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="충청" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/gyungsang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="경상" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/junra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전라" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/gangwon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강원" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/jeju"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제주" />
+    </com.google.android.material.tabs.TabLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container">
+    </FrameLayout>
+
+
+</LinearLayout>
