@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/reviewmakingtop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="With Me 후기 작성"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <EditText
+        android:id="@+id/reviewmaking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="후기를 써주세요!!"/>
+    <Button
+        android:id="@+id/goback_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="뒤로 가기"/>
+
+
+</LinearLayout>

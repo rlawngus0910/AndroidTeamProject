@@ -31,5 +31,4 @@
         android:text="Login"
         android:layout_gravity="end"/>
 
-
 </LinearLayout>
