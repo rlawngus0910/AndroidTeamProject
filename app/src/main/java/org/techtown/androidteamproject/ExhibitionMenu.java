@@ -33,6 +33,9 @@ public class ExhibitionMenu extends AppCompatActivity {
                 Intent intent3 = new Intent(getApplicationContext(),RecommandExhibition.class);
                 startActivity(intent3);
                 break;
+            case R.id.board:
+                Intent intent4 = new Intent(getApplicationContext(),Board.class);
+                startActivity(intent4);
         }
     }
 }
