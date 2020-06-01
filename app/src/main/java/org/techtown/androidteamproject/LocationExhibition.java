@@ -20,6 +20,8 @@ public class LocationExhibition extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_exhibition);
+        setTitle("지역별 전시회");
+
 
         TabLayout location_tab = (TabLayout) findViewById(R.id.location_tabs);
         seoulfragment = new SeoulExhibition();

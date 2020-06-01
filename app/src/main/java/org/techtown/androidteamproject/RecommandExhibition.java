@@ -9,5 +9,6 @@ public class RecommandExhibition extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recommand_exhibition);
+        setTitle("추천 전시회");
     }
 }
