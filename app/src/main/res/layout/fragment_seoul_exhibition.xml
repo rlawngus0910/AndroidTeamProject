@@ -6,9 +6,10 @@
     tools:context=".SeoulExhibition">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firestore_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="서울 전시회" />
+        android:layout_height="match_parent" />
+
 
 </FrameLayout>
