@@ -6,15 +6,32 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/cardview_light_background" >
+
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="날짜별 예매"
-            android:textSize="30sp"/>
+            android:layout_height="50dp"
+            android:background="@color/cardview_shadow_start_color"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <GridView
+            android:layout_marginTop="10dp"
+            android:id="@+id/gridview"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:numColumns="7"
+            android:listSelector="@color/colorPrimary"
+            >
+        </GridView>
 
     <Button
         android:id="@+id/date_button"
@@ -23,32 +40,44 @@
         android:layout_height="40dp"
         android:textColor="#FF000000"
         android:gravity="right"
-        android:layout_marginLeft="230dp"
-        android:text="오늘 날짜로 돌아가기"/>
+        android:layout_marginLeft="300dp"
+        android:text="오늘 날짜"/>
 
 
-        <DatePicker
-            android:id="@+id/datePicker1"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="30dp"
-            android:calendarViewShown="true"
-            android:datePickerMode="calendar"
-            android:visibility="visible" />
-
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TODAY'S PICK!!"
-        android:layout_marginBottom="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TODAY'S PICK!!"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="불혹, 미혹하다"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Oh! 감각의 나라"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="추천 3"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="추천 4"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="추천 5"/>
+        </LinearLayout>
 </LinearLayout>
 </LinearLayout>
