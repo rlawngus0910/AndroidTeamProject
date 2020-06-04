@@ -4,31 +4,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical">
+    android:background="@drawable/logotitleee"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:fontFamily="@font/fontfile"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="36dp"
+        android:textStyle="bold" />
+
 
     <EditText
+        android:fontFamily="@font/fontfile"
         android:id="@+id/sign_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginLeft="16dp"
         android:background="@null"
-        android:layout_margin="8dp"
-        android:hint="Email"
-        />
+        android:hint="Email" />
+
     <EditText
+        android:fontFamily="@font/fontfile"
         android:id="@+id/sign_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="12dp"
+        android:layout_marginLeft="16dp"
         android:background="@null"
-        android:hint="password"
-        />
+        android:hint="password" />
+
     <Button
+        android:fontFamily="@font/fontfile"
         android:id="@+id/sign_success"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:layout_marginEnd="8dp"
-        android:textAllCaps="false"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
         android:text="Login"
-        android:layout_gravity="end"/>
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:fontFamily="@font/fontfile"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:text="ID/PW찾기"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:fontFamily="@font/fontfile"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:text="회원가입"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 </LinearLayout>
