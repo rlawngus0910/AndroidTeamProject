@@ -21,6 +21,7 @@
 
     <ImageButton
         android:id="@+id/reviewlistbtn"
+        android:onClick="onClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
@@ -32,6 +33,7 @@
 
     <ImageButton
         android:id="@+id/reviewmakingbtn"
+        android:onClick="onClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
