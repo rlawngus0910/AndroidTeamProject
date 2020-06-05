@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/logotitleee"
-    >
+    android:background="@drawable/logotitleee">
 
     <TextView
         android:id="@+id/textView"
@@ -20,40 +19,57 @@
 
 
     <EditText
-        android:fontFamily="@font/fontfile"
-        android:id="@+id/sign_email"
+        android:id="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:layout_marginLeft="16dp"
         android:background="@null"
-        android:hint="Email" />
+        android:fontFamily="@font/fontfile"
+        android:hint="Email"
+        android:textSize="22dp" />
 
     <EditText
-        android:fontFamily="@font/fontfile"
-        android:id="@+id/sign_password"
+        android:id="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:layout_marginLeft="16dp"
         android:background="@null"
-        android:hint="password" />
+        android:fontFamily="@font/fontfile"
+        android:hint="password"
+        android:textSize="22dp" />
 
     <Button
-        android:fontFamily="@font/fontfile"
-        android:id="@+id/sign_success"
+        android:id="@+id/login_success"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="6dp"
         android:background="@drawable/corner_shape"
-        android:text="Login"
+        android:fontFamily="@font/fontfile"
+        android:text="로그인"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:onClick="onClick" />
+    <Button
+        android:id="@+id/sign_logout"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:fontFamily="@font/fontfile"
+        android:text="로그아웃"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/sign_find"
         android:fontFamily="@font/fontfile"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
@@ -67,6 +83,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/login_signup"
         android:fontFamily="@font/fontfile"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

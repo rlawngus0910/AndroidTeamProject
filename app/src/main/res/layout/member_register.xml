@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/logotitleee"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:fontFamily="@font/fontfile"
+        android:gravity="center"
+        android:text="Welcome"
+        android:textColor="#FFFFFF"
+        android:textSize="36dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:fontFamily="@font/fontfile"
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="3dp"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:fontFamily="@font/fontfile"
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="3dp"
+            android:ems="10"
+            android:hint="PassWord"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:fontFamily="@font/fontfile"
+            android:id="@+id/Birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="3dp"
+            android:ems="10"
+            android:hint="생년월일"
+            android:inputType="date|text" />
+
+        <EditText
+            android:fontFamily="@font/fontfile"
+            android:id="@+id/Phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="3dp"
+            android:ems="10"
+            android:hint="전화번호"
+            android:inputType="phone" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/fontfile"
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="9dp"
+                android:background="#1BE3E3E3"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:text="관심있는 전시회"
+                android:textSize="16dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="155dp">
+
+                <CheckBox
+                    android:fontFamily="@font/fontfile"
+                    android:id="@+id/checkBox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="설치/조형예술"
+                    android:textSize="12dp" />
+
+                <CheckBox
+                    android:fontFamily="@font/fontfile"
+                    android:id="@+id/checkBox3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="회화"
+                    android:textSize="12dp" />
+
+                <CheckBox
+                    android:fontFamily="@font/fontfile"
+                    android:id="@+id/checkBox4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="사진"
+                    android:textSize="12dp" />
+
+                <CheckBox
+                    android:fontFamily="@font/fontfile"
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="11dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="현대/대중예술"
+                    android:textSize="12dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/member_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/corner_shape"
+            android:fontFamily="@font/fontfile"
+            android:text="회원가입"
+            android:textColor="#A4FFFFFF"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+</LinearLayout>

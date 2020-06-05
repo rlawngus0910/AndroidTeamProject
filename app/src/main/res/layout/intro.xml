@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:background="@drawable/logotitleee">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="전국 각지에서 열리는 "
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        android:fontFamily="@font/fontfile"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="전시회 정보를 한눈에"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        android:fontFamily="@font/fontfile"/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="With me"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        android:fontFamily="@font/fontfile"/>
+
+</LinearLayout>
