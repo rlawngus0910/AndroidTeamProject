@@ -10,14 +10,18 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Board extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reviewlistboard);
+        setContentView(R.layout.review);
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.reviewbtn:
-                Intent intent = new Intent(getApplicationContext(), ReviewBoard.class);
+            case R.id.reviewlistbtn:
+                Intent intent = new Intent(getApplicationContext(), ReviewList.class);
                 startActivity(intent);
+                break;
+            case R.id.reviewmakingbtn:
+                Intent intent1= new Intent(getApplicationContext(),ReviewBoard.class);
+                startActivity(intent1);
                 break;
 
         }
