@@ -1,5 +1,6 @@
 package org.techtown.androidteamproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,9 +48,28 @@ public class SeoulExhibition extends Fragment {
         adapter = new FirestoreRecyclerAdapter<ExhibitionModel, CustomViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CustomViewHolder holder, int position, @NonNull ExhibitionModel model) {
+                final String name = model.getName();
+                final String place = model.getPlace();
+                final String poster = model.getImg();
+                final String detail = model.getDetail();
+                final String startdate = model.getStartdate();
+                final String finishdate = model.getFinishdate();
                 holder.list_name.setText(model.getName());
                 holder.list_place.setText(model.getPlace());
                 Picasso.get().load(model.getImg()).into(holder.list_image);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(),ExhibitionDetail.class);
+                        intent.putExtra("title", name);
+                        intent.putExtra("place",place);
+                        intent.putExtra("poster",poster);
+                        intent.putExtra("detail",detail);
+                        intent.putExtra("startdate",startdate);
+                        intent.putExtra("finishdate",finishdate);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull
