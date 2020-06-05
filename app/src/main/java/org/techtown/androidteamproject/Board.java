@@ -16,7 +16,7 @@ public class Board extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.reviewlistbtn:
-                Intent intent = new Intent(getApplicationContext(), ReviewList.class);
+                Intent intent = new Intent(getApplicationContext(),ReviewList.class);
                 startActivity(intent);
                 break;
             case R.id.reviewmakingbtn:

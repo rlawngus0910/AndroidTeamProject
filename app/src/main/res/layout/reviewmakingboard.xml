@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:id="@+id/reviewmakingtop"
+        android:id="@+id/reviewmakingttttop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="With Me 후기 작성"

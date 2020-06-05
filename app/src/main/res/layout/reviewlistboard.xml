@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/reviewboard"
+            android:id="@+id/reviewbbboard"
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:layout_weight="1"
@@ -20,15 +20,7 @@
             android:textSize="34sp"
             />
 
-        <Button
-            android:id="@+id/reviewbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_marginEnd="8dp"
-            android:onClick="onClick"
-            android:text="후기 작성"
-            android:textAllCaps="false" />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

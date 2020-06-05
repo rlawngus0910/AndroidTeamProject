@@ -3,45 +3,97 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
     android:orientation="vertical"
     android:background="@drawable/logotitleee">
 
-    <EditText
-
-        android:layout_width="393dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:background="@null"
-        android:hint="Email" />
-
-    <EditText
-        android:layout_width="393dp"
-        android:layout_height="47dp"
-        android:layout_margin="8dp"
-        android:background="@null"
-        android:hint="password" />
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginEnd="8dp"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:text="sign up"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:textAllCaps="false"
-            android:text="Login"
-            android:layout_gravity="end"/>
+        android:layout_height="250dp"
+        android:fontFamily="@font/fontfile"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="36dp"
+        android:textStyle="bold" />
 
-    </LinearLayout>
+
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginLeft="16dp"
+        android:background="@null"
+        android:fontFamily="@font/fontfile"
+        android:hint="Email"
+        android:textSize="22dp" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginLeft="16dp"
+        android:background="@null"
+        android:fontFamily="@font/fontfile"
+        android:hint="password"
+        android:textSize="22dp" />
+
+    <Button
+        android:id="@+id/login_success"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:fontFamily="@font/fontfile"
+        android:text="로그인"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:onClick="onClick" />
+    <Button
+        android:id="@+id/sign_logout"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:fontFamily="@font/fontfile"
+        android:text="로그아웃"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/sign_find"
+        android:fontFamily="@font/fontfile"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:text="ID/PW찾기"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/login_signup"
+        android:fontFamily="@font/fontfile"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/corner_shape"
+        android:text="회원가입"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 </LinearLayout>
