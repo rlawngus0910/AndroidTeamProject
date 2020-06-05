@@ -1,5 +1,6 @@
 package org.techtown.androidteamproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,17 +25,18 @@ public class Member extends AppCompatActivity {
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
     private FirebaseFirestore mStore=FirebaseFirestore.getInstance();
 
-    private EditText mEmailText,mPasswordText,mBirthText,mPhoneText;
+    private EditText mEmailText,mPasswordText;
+    //,mBirthText,mPhoneText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.member_register);
 
         mEmailText = findViewById(R.id.Email);
         mPasswordText = findViewById(R.id.Password);
-        mBirthText = findViewById(R.id.Birth);
-        mPhoneText = findViewById(R.id.Phone);
+        //mBirthText = findViewById(R.id.Birth);
+        //mPhoneText = findViewById(R.id.Phone);
 
         findViewById(R.id.member_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +54,9 @@ public class Member extends AppCompatActivity {
                                         userMap.put(FirebaseID.email,mEmailText.getText().toString());  //유저이메일
                                         userMap.put(FirebaseID.password,mPasswordText.getText().toString()); //유저패스워드
                                         mStore.collection(FirebaseID.user).document(user.getUid()).set(userMap, SetOptions.merge());
-                                        finish();
+                                        //finish();
+                                        Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
+                                        startActivity(intent);
                                     }
                                 } else {
                                     Toast.makeText(Member.this, "Sign Up Error",
