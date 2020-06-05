@@ -21,6 +21,7 @@
         <activity android:name=".DateExhibition"/>
         <activity android:name=".RecommandExhibition"/>
         <activity android:name=".Board"/>
+        <activity android:name=".ReviewBoard"/>
     </application>
 
 </manifest>
