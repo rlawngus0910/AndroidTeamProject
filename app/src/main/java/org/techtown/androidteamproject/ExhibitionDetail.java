@@ -24,6 +24,8 @@ public class ExhibitionDetail extends AppCompatActivity {
         String startdate = intent.getStringExtra("startdate");
         String finishdate = intent.getStringExtra("finishdate");
 
+        setTitle(title);
+
         ImageView detail_poster = (ImageView)findViewById(R.id.detail_poster);
         Picasso.get().load(poster).into(detail_poster);
         TextView detail_title = (TextView)findViewById(R.id.detail_title);
