@@ -54,9 +54,9 @@ public class Member extends AppCompatActivity {
                                         userMap.put(FirebaseID.email,mEmailText.getText().toString());  //유저이메일
                                         userMap.put(FirebaseID.password,mPasswordText.getText().toString()); //유저패스워드
                                         mStore.collection(FirebaseID.user).document(user.getUid()).set(userMap, SetOptions.merge());
-                                        //finish();
-                                        Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
-                                        startActivity(intent);
+                                        finish();
+                                        //Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
+                                        //startActivity(intent);
                                     }
                                 } else {
                                     Toast.makeText(Member.this, "Sign Up Error",
