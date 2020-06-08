@@ -2,7 +2,6 @@ package org.techtown.androidteamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -57,13 +56,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     Toast.makeText(Login.this, "로그인 실패",
                                             Toast.LENGTH_SHORT).show();
                                 }
-
-                                // ...
                             }
                         });
-
-                // Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
-                //  startActivity(intent);
                 break;
         }
 
