@@ -2,18 +2,30 @@ package org.techtown.androidteamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -45,14 +57,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.sign_find:  //비번초기화
+                break;
+
+            case R.id.sign_logout:   //로그아웃
+                FirebaseAuth.getInstance().signOut();
+                break;
 
             case R.id.login_signup:   //회원가입
-                startActivities(new Intent(this,Member.class));
+                Intent intent1 = new Intent(getApplicationContext(), Member.class);
+                startActivity(intent1);
                 break;
 
             case R.id.login_success: //로그인 성공
+
                 mAuth.signInWithEmailAndPassword(mEmail.getText().toString(), mPassword.getText().toString())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -62,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     if(user!=null) {
                                         Toast.makeText(MainActivity.this, "로그인 성공",
                                                 Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
+                                        startActivity(intent);
                                     }
                                 } else {
                                     Toast.makeText(MainActivity.this, "로그인 실패",
@@ -72,11 +95,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
 
-                // Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
-                //  startActivity(intent);
+
                 break;
         }
-
     }
 
     private void startActivities(Intent intent) {
