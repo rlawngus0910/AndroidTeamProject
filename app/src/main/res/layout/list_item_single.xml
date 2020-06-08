@@ -17,22 +17,36 @@
 
     <TextView
         android:id="@+id/list_name"
-        android:layout_width="wrap_content"
+        android:layout_width="194dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:textSize="30dp"
+        android:layout_marginStart="24dp"
         android:text="TextView"
+        android:textSize="27dp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/list_place"
         app:layout_constraintStart_toEndOf="@+id/list_image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.142" />
 
     <TextView
         android:id="@+id/list_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/list_image" />
+        app:layout_constraintStart_toEndOf="@+id/list_image"
+        app:layout_constraintTop_toBottomOf="@+id/list_name" />
+
+    <TextView
+        android:id="@+id/list_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/list_image"
+        app:layout_constraintTop_toBottomOf="@+id/list_place" />
 </androidx.constraintlayout.widget.ConstraintLayout>

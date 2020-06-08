@@ -26,6 +26,7 @@
         <activity android:name=".Board"/>
         <activity android:name=".ReviewList"/>
         <activity android:name=".ReviewBoard"/>
+        <activity android:name=".ExhibitionDetail"/>
     </application>
 
 </manifest>
