@@ -2,52 +2,58 @@ package org.techtown.androidteamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-
-public class SeoulExhibition extends Fragment {
+public class Search extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
-    private RecyclerView mFirestoreList;
+    private EditText SearchField;
+    private Button SearchBtn;
+    private RecyclerView ResultList;
     private FirestoreRecyclerAdapter adapter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_seoul_exhibition, container,false);
+        setContentView(R.layout.search);
+        setTitle("검색");
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = (RecyclerView) view.findViewById(R.id.firestore_list);
-        mFirestoreList.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        SearchField = (EditText)findViewById(R.id.search_field);
+        SearchBtn = (Button) findViewById(R.id.search_btn);
+        ResultList = (RecyclerView)findViewById(R.id.result_list);
+        ResultList.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
 
-        Query query = firebaseFirestore.collection("Exhibition").whereEqualTo("location","서울");
+        SearchBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String searchText = SearchField.getText().toString();
+                ExhibitionSearch(searchText);
+            }
+        });
+    }
+    private void ExhibitionSearch(String searchText){
+        Query query = firebaseFirestore.collection("Exhibition").orderBy("name").startAt(searchText).endAt(searchText+"\uf8ff");
         FirestoreRecyclerOptions<ExhibitionModel> options = new FirestoreRecyclerOptions.Builder<ExhibitionModel>()
                 .setQuery(query, ExhibitionModel.class).build();
-
         adapter = new FirestoreRecyclerAdapter<ExhibitionModel, CustomViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CustomViewHolder holder, int position, @NonNull ExhibitionModel model) {
@@ -64,16 +70,16 @@ public class SeoulExhibition extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(),ExhibitionDetail.class);
+                        Intent intent = new Intent(getApplicationContext(), ExhibitionDetail.class);
                         intent.putExtra("title", name);
-                        intent.putExtra("place",place);
-                        intent.putExtra("poster",poster);
-                        intent.putExtra("detail",detail);
-                        intent.putExtra("startdate",startdate);
-                        intent.putExtra("finishdate",finishdate);
+                        intent.putExtra("place", place);
+                        intent.putExtra("poster", poster);
+                        intent.putExtra("detail", detail);
+                        intent.putExtra("startdate", startdate);
+                        intent.putExtra("finishdate", finishdate);
                         startActivity(intent);
                     }
-                });
+            });
             }
 
             @NonNull
@@ -83,12 +89,15 @@ public class SeoulExhibition extends Fragment {
                 return new CustomViewHolder((view));
             }
         };
-        mFirestoreList.setHasFixedSize(true);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mFirestoreList.setAdapter(adapter);
-        return view;
+        ResultList.setHasFixedSize(true);
+        ResultList.setLayoutManager(new LinearLayoutManager(this));
+        ResultList.setAdapter(adapter);
 
+        onStart();
     }
+
+
+
 
     private class CustomViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
@@ -96,7 +105,7 @@ public class SeoulExhibition extends Fragment {
         private TextView list_date;
         private ImageView list_image;
 
-        public CustomViewHolder(View itemView){
+        public CustomViewHolder(@NonNull View itemView){
             super(itemView);
             list_name = itemView.findViewById(R.id.list_name);
             list_place = itemView.findViewById(R.id.list_place);
@@ -107,12 +116,14 @@ public class SeoulExhibition extends Fragment {
     @Override
     public void onStop(){
         super.onStop();
-        adapter.stopListening();
+        if(adapter!=null)
+            adapter.stopListening();
     }
 
     @Override
     public void onStart(){
         super.onStart();
-        adapter.startListening();
+        if(adapter!=null)
+            adapter.startListening();
     }
 }
