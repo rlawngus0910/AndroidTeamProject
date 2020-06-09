@@ -51,6 +51,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     if(user!=null) {
                                         Toast.makeText(Login.this, "로그인 성공",
                                                 Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
+                                        startActivity(intent);
                                     }
                                 } else {
                                     Toast.makeText(Login.this, "로그인 실패",
