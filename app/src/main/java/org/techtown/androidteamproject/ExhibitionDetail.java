@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.squareup.picasso.Picasso;
 
@@ -16,6 +17,9 @@ public class ExhibitionDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exhibition_detail);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_toolbar);
+        setSupportActionBar(toolbar);
+
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String place = intent.getStringExtra("place");
@@ -24,7 +28,7 @@ public class ExhibitionDetail extends AppCompatActivity {
         String startdate = intent.getStringExtra("startdate");
         String finishdate = intent.getStringExtra("finishdate");
 
-        setTitle(title);
+        toolbar.setTitle(title);
 
         ImageView detail_poster = (ImageView)findViewById(R.id.detail_poster);
         Picasso.get().load(poster).into(detail_poster);

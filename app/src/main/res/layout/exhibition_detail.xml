@@ -8,9 +8,24 @@
     android:visibility="visible">
 
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:id="@+id/appbar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/app_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:title="@string/app_name"
+                app:titleTextColor="@android:color/white"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
             android:id="@+id/detail_poster"
@@ -23,9 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="520dp"
-            android:background="@drawable/rounded"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            android:background="@drawable/rounded">
 
             <TextView
                 android:id="@+id/detail_title"
@@ -44,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
-                android:textSize="20sp"
                 android:text="TextView"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/detail_title"
                 app:layout_constraintTop_toBottomOf="@+id/detail_title" />
 
@@ -54,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:textSize="20sp"
                 android:text="TextView"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/detail_place"
                 app:layout_constraintTop_toBottomOf="@+id/detail_place" />
 
@@ -64,16 +77,16 @@
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:text="TextView"
                 android:paddingBottom="25dp"
+                android:textSize="20sp"
+                android:text="TextView"
                 app:layout_constraintStart_toStartOf="@+id/detail_date"
                 app:layout_constraintTop_toBottomOf="@+id/detail_date" />
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </ScrollView>
 
 

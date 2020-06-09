@@ -116,7 +116,8 @@ public class Search extends AppCompatActivity {
     @Override
     public void onStop(){
         super.onStop();
-        adapter.stopListening();
+        if(adapter!=null)
+            adapter.stopListening();
     }
 
     @Override

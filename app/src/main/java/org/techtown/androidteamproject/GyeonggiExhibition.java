@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,8 @@ public class GyeonggiExhibition extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gyeonggi_exhibition, container,false);
         firebaseFirestore = FirebaseFirestore.getInstance();
         mFirestoreList = (RecyclerView) view.findViewById(R.id.firestore_list2);
+        mFirestoreList.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+
 
         Query query = firebaseFirestore.collection("Exhibition").whereEqualTo("location","경기");
         FirestoreRecyclerOptions<ExhibitionModel> options = new FirestoreRecyclerOptions.Builder<ExhibitionModel>()
@@ -100,7 +103,7 @@ public class GyeonggiExhibition extends Fragment {
     @Override
     public void onStop(){
         super.onStop();
-        adapter.startListening();
+        adapter.stopListening();
     }
 
     @Override

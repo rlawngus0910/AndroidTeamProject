@@ -20,7 +20,7 @@
         android:paddingTop="10dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
-        android:text="전시회 이름을 입력해주세요."
+        android:hint="전시회 이름을 입력하세요."
         android:textColor="#999999"
         android:textSize="16sp" />
 
