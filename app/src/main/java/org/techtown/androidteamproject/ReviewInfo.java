@@ -8,6 +8,7 @@ public class ReviewInfo {
     public ReviewInfo(String title, String content,String reviewer){
         this.title=title;
         this.content=content;
+        this.reviewer=reviewer;
 
     }
 
