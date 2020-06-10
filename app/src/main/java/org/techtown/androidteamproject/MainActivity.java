@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.login_signup).setOnClickListener((View.OnClickListener) this);
         findViewById(R.id.login_success).setOnClickListener((View.OnClickListener) this);
-
-
+        findViewById(R.id.sign_logout).setOnClickListener((View.OnClickListener) this);
+        findViewById(R.id.sign_reset).setOnClickListener((View.OnClickListener) this);
     }
     //자동로그인
     @Override
@@ -44,18 +44,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //비밀번호 재설정
+    private void resetPassword() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String emailaddress = mEmail.getText().toString();
+        auth.sendPasswordResetEmail(emailaddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Check Your Email", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sign_find:  //resetpassword
+                resetPassword();
                 break;
 
             case R.id.sign_logout:   //logout
                 FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this, "로그아웃 성공",
+                        Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.login_signup:   //Member
-                Log.i(this.getClass().getName(),"실행");
+                Toast.makeText(MainActivity.this, "회원가입으로 이동",
+                        Toast.LENGTH_SHORT).show();
                 Intent intent1 = new Intent(getApplicationContext(), Member.class);
                 startActivity(intent1);
                 break;
