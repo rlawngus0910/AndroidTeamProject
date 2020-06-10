@@ -26,7 +26,7 @@ public class ReviewBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reviewmakingboard);
 
-        findViewById(R.id.reviewcomplete);
+        findViewById(R.id.reviewcomplete).setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener(){
