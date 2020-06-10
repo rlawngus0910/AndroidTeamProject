@@ -19,6 +19,7 @@ public class ExhibitionMenu extends AppCompatActivity {
         setContentView(R.layout.exhibition_menu);
     }
 
+
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.location_exhibition:
