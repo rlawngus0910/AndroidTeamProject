@@ -93,12 +93,13 @@
                 android:textSize="16dp" />
 
             <RadioGroup
+                android:id="@+id/radiogr"
                 android:layout_width="match_parent"
                 android:layout_height="155dp">
 
-                <CheckBox
+                <RadioButton
                     android:fontFamily="@font/fontfile"
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/radiobtn1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="11dp"
@@ -107,9 +108,9 @@
                     android:text="설치/조형예술"
                     android:textSize="12dp" />
 
-                <CheckBox
+                <RadioButton
                     android:fontFamily="@font/fontfile"
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/radiobtn2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="11dp"
@@ -118,9 +119,9 @@
                     android:text="회화"
                     android:textSize="12dp" />
 
-                <CheckBox
+                <RadioButton
                     android:fontFamily="@font/fontfile"
-                    android:id="@+id/checkBox4"
+                    android:id="@+id/radiobtn3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="11dp"
@@ -129,9 +130,9 @@
                     android:text="사진"
                     android:textSize="12dp" />
 
-                <CheckBox
+                <RadioButton
                     android:fontFamily="@font/fontfile"
-                    android:id="@+id/checkBox"
+                    android:id="@+id/radiobtn4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="11dp"

@@ -8,6 +8,7 @@ public class ExhibitionModel {
     private String finishdate;
     private String img;
     private String detail;
+    private String genre;
 
     public String getName() {
         return name;
@@ -62,5 +63,13 @@ public class ExhibitionModel {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }
