@@ -18,23 +18,35 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.recyclerview.widget.OrientationHelper;
+
+import com.applikeysolutions.cosmocalendar.utils.SelectionType;
+import com.applikeysolutions.cosmocalendar.view.CalendarView;
 
 public class DateExhibition extends Activity {
 
+    CalendarView calendarView;
 
-    private TextView tvDate;
+    /*private TextView tvDate;
     private GridAdapter gridAdapter;
     private ArrayList<String> dayList;
     private GridView gridView;
-    private Calendar mCal;
+    private Calendar mCal;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.date_exhibition2);
+        Toast.makeText(this,"시작날짜와 종료날짜를 선택하세요.",Toast.LENGTH_LONG).show();
+        calendarView = (CalendarView)findViewById(R.id.calendar_view);
+        calendarView.setSelectionType(SelectionType.RANGE);
+        calendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
 
-        setContentView(R.layout.date_exhibition);
+    }
 
-        tvDate = (TextView)findViewById(R.id.tv_date);
+        /*tvDate = (TextView)findViewById(R.id.tv_date);
         gridView = (GridView)findViewById(R.id.gridview);
 
 
@@ -141,6 +153,6 @@ public class DateExhibition extends Activity {
 
     private class ViewHolder {
         TextView tvItemGridView;
-    }
+    }*/
 
 }

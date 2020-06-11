@@ -63,7 +63,7 @@ public class ReviewBoard extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG,"DocumentSnapshot written with ID: "+documentReference.getId());
-                        startToast("리뷰를 입력해주세요.");
+                        startToast("리뷰 작성이 완료되었습니다.");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
