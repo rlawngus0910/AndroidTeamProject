@@ -70,7 +70,7 @@
         android:onClick="onClick"/>
 
     <Button
-        android:id="@+id/sign_find"
+        android:id="@+id/sign_reset"
         android:fontFamily="@font/fontfile"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="6dp"
         android:background="@drawable/corner_shape"
-        android:text="ID/PW찾기"
+        android:text="PW 초기화"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
