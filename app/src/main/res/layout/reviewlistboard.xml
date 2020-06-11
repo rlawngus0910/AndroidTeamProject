@@ -22,30 +22,18 @@
 
 
     </LinearLayout>
-    <LinearLayout
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
+        android:layout_height="match_parent"
+        tools:context=".Reviews_List">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/firestore_review_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="후기 A"
-            android:textSize="14sp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="후기 B"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="후기 C"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="후기 D"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="후기 E"/>
-    </LinearLayout>
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 </LinearLayout>

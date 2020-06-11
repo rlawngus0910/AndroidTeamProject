@@ -90,7 +90,7 @@ public class SeoulExhibition extends Fragment {
 
     }
 
-    private class CustomViewHolder extends RecyclerView.ViewHolder{
+    class CustomViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
         private TextView list_place;
         private TextView list_date;
