@@ -22,11 +22,11 @@ import com.applikeysolutions.cosmocalendar.utils.SelectionType;
 import com.applikeysolutions.cosmocalendar.view.CalendarView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -49,7 +49,7 @@ public class DateExhibition extends Activity {
     private Calendar mCal;*/
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_exhibition2);
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -58,29 +58,42 @@ public class DateExhibition extends Activity {
         calendarView.setSelectionType(SelectionType.RANGE);
         calendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
         DateList = (RecyclerView) findViewById(R.id.date_list);
-        print = (Button) findViewById(R.id.printdate);
+        print = (Button) findViewById(R.id.printde);
         print.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String st;
+                String fn;
+                PrintDateExhibition(stdate, fndate);
                 List<Calendar> days = calendarView.getSelectedDates();
                 for(int i=0;i<days.size();i++) {
                     Calendar calendar = days.get(i);
-                     new Date(calendar.getTimeInMillis());
                     if(i==0) {
                         stdate = new Date(calendar.getTimeInMillis());
+                        //st = new SimpleDateFormat("yyyy-MM-dd").format(stdate);
                     }
                     else if(i==(days.size()-1)) {
                         fndate = new Date(calendar.getTimeInMillis());
+                        //fn = new SimpleDateFormat("yyyy-MM-dd").format(fndate);
                     }
                 }
-                PrintDateExhibition(stdate, fndate);
+                st = new SimpleDateFormat("yyyy-MM-dd").format(stdate);
+                fn = new SimpleDateFormat("yyyy-MM-dd").format(fndate);
+
+                Intent intent2 = new Intent(getApplicationContext(), PrintingDateExhibtion.class);
+                intent2.putExtra("startDate",st);
+                intent2.putExtra("finishDate",fn);
+
+                startActivity(intent2);
+
+
 
             }
         });
 
     }
     private void PrintDateExhibition(Date start, Date finish){
-        Query query = firebaseFirestore.collection("Exhibition").orderBy("startDate").startAt(start).endAt(finish);
+        Query query = firebaseFirestore.collection("Exhibition").whereEqualTo("location","서울");
         FirestoreRecyclerOptions<ExhibitionModel> options = new FirestoreRecyclerOptions.Builder<ExhibitionModel>()
                 .setQuery(query, ExhibitionModel.class).build();
         adapter = new FirestoreRecyclerAdapter<ExhibitionModel, CustomViewHolder>(options) {
@@ -105,6 +118,8 @@ public class DateExhibition extends Activity {
                         intent.putExtra("place", place);
                         intent.putExtra("poster", poster);
                         intent.putExtra("detail", detail);
+                        intent.putExtra("startdate", startdate);
+                        intent.putExtra("finishdate", finishdate);
                         startActivity(intent);
                     }
                 });
@@ -114,13 +129,14 @@ public class DateExhibition extends Activity {
             @Override
             public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single,parent,false);
-                return new CustomViewHolder(view);
+                return new CustomViewHolder((view));
             }
         };
 
         DateList.setHasFixedSize(true);
         DateList.setLayoutManager(new LinearLayoutManager(this));
         DateList.setAdapter(adapter);
+
 
         onStart();
 
@@ -132,7 +148,7 @@ public class DateExhibition extends Activity {
         private TextView list_date;
         private ImageView list_image;
 
-        public CustomViewHolder(View itemView){
+        public CustomViewHolder(@NonNull View itemView){
             super(itemView);
             list_name = itemView.findViewById(R.id.list_name);
             list_place = itemView.findViewById(R.id.list_place);
@@ -151,7 +167,8 @@ public class DateExhibition extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.stopListening();
+        if(adapter!=null)
+            adapter.stopListening();
     }
 
         /*tvDate = (TextView)findViewById(R.id.tv_date);

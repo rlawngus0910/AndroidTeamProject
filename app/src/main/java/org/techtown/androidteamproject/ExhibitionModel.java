@@ -10,8 +10,10 @@ public class ExhibitionModel {
     private String finishdate;
     private String img;
     private String detail;
-    private Date startDate;
-    private Date finishDate;
+    private Date start;
+    private Date finish;
+    //private Date startDate;
+    //private Date finishDate;
 
 
 
@@ -70,7 +72,17 @@ public class ExhibitionModel {
         this.detail = detail;
     }
 
-    public Date getStartDate() {
+    public Date getStart(){
+        return start;
+    }
+
+    public Date getFinish() {
+        return finish;
+    }
+
+
+
+    /*public Date getStartDate() {
         return startDate;
     }
 
@@ -84,5 +96,5 @@ public class ExhibitionModel {
 
     public void setFinishDate(Date finishDate) {
         this.finishDate = finishDate;
-    }
+    }*/
 }

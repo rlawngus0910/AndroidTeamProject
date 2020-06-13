@@ -11,25 +11,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
 
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Member"/>
-        <activity android:name=".ExhibitionMenu"/>
-        <activity android:name=".LocationExhibition"/>
-        <activity android:name=".DateExhibition"/>
-        <activity android:name=".RecommandExhibition"/>
-        <activity android:name=".Board"/>
-        <activity android:name=".ReviewList"/>
-        <activity android:name=".ReviewBoard"/>
-        <activity android:name=".ExhibitionDetail"
-                  android:theme="@style/NoTheme"
-            />
-        <activity android:name=".Search"/>
+        <activity android:name=".Member" />
+        <activity android:name=".ExhibitionMenu" />
+        <activity android:name=".LocationExhibition" />
+        <activity android:name=".DateExhibition" />
+        <activity android:name=".RecommandExhibition" />
+        <activity android:name=".Board" />
+        <activity android:name=".PrintingDateExhibtion"/>
+
+        <activity android:name=".ReviewList" />
+        <activity android:name=".ReviewBoard" />
+        <activity
+            android:name=".ExhibitionDetail"
+            android:theme="@style/NoTheme" />
+        <activity android:name=".Search" />
     </application>
 
 </manifest>
