@@ -4,36 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/reviewbbboard"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:layout_weight="1"
-            android:text="With Me 후기 게시판"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:textSize="34sp"
-            />
-
-
-    </LinearLayout>
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Reviews_List">
+        android:id="@+id/recycler_view"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/firestore_review_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </FrameLayout>
 </LinearLayout>

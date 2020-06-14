@@ -5,11 +5,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,93 +21,55 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
-public class ReviewList extends Fragment {
-    private FirebaseFirestore firebaseFirestore;
-    private RecyclerView mFirestoreList;
-    private FirestoreRecyclerAdapter adapter;
+public class ReviewList extends AppCompatActivity {
+
+    private FirebaseFirestore db= FirebaseFirestore.getInstance();
+    private CollectionReference notebookRef=db.collection("Reviews");
+
+    private NoteAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.reviewlistboard);
+
+        setUpRecyclerView();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.reviewlistboard, container,false);
+    private void setUpRecyclerView(){
+        Query query= notebookRef.orderBy("title",Query.Direction.DESCENDING);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = (RecyclerView) view.findViewById(R.id.firestore_list);
-        mFirestoreList.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        FirestoreRecyclerOptions<ReviewInfo> options=new FirestoreRecyclerOptions.Builder<ReviewInfo>()
+                .setQuery(query,ReviewInfo.class)
+                .build();
 
-        Query query = firebaseFirestore.collection("Reviews");
-        FirestoreRecyclerOptions<ReviewInfo> options = new FirestoreRecyclerOptions.Builder<ReviewInfo>()
-                .setQuery(query, ReviewInfo.class).build();
+        adapter=new NoteAdapter(options);
 
-        adapter = new FirestoreRecyclerAdapter<ReviewInfo,CustomViewHolder>(options) {
-
-            @Override
-            protected void onBindViewHolder(@NonNull CustomViewHolder holder, int position, @NonNull ReviewInfo reviewInfo) {
-                final String title = reviewInfo.getTitle();
-                final String content = reviewInfo.getContent();
-
-                holder.list_title.setText(reviewInfo.getTitle());
-                holder.list_content.setText(reviewInfo.getContent());
-
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(),ExhibitionDetail.class);
-                        intent.putExtra("title", title);
-                        intent.putExtra("place", content);
-
-                        startActivity(intent);
-                    }
-                });
-            }
-
-            @NonNull
-            @Override
-            public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reviewform,parent,false);
-                return new CustomViewHolder((view));
-            }
-        };
-        mFirestoreList.setHasFixedSize(true);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mFirestoreList.setAdapter(adapter);
-        return view;
-
-    }
-
-
-
-    private class CustomViewHolder extends RecyclerView.ViewHolder{
-        private TextView list_title;
-        private TextView list_content;
-
-
-        public CustomViewHolder(View itemView){
-            super(itemView);
-            list_title = itemView.findViewById(R.id.review_list_title);//
-            list_content = itemView.findViewById(R.id.review_list_content);
-
-        }
+        RecyclerView recyclerView=findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
     @Override
-    public void onStop(){
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    public void onStart(){
+    protected void onStart() {
         super.onStart();
         adapter.startListening();
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        adapter.stopListening();
     }
 }
