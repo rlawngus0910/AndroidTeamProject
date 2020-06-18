@@ -2,6 +2,7 @@ package org.techtown.androidteamproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +24,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PrintingDateExhibtion extends AppCompatActivity {
+public class StartDateExhibition extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView DateExhibitionList;
     private FirestoreRecyclerAdapter adapter;
@@ -33,9 +34,11 @@ public class PrintingDateExhibtion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_printing_date_exhibtion);
+        setTitle("날짜별 전시회");
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         DateExhibitionList = (RecyclerView) findViewById(R.id.dateex_list);
+        DateExhibitionList.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
         Intent intent = getIntent();
         String startDate = intent.getStringExtra("startDate");
         String finishDate = intent.getStringExtra("finishDate");
@@ -62,6 +65,20 @@ public class PrintingDateExhibtion extends AppCompatActivity {
                 holder.list_place.setText(model.getPlace());
                 holder.list_date.setText(model.getStartdate()+" ~ "+model.getFinishdate());
                 Picasso.get().load(model.getImg()).into(holder.list_image);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(),ExhibitionDetail.class);
+                        intent.putExtra("title", name);
+                        intent.putExtra("place",place);
+                        intent.putExtra("poster",poster);
+                        intent.putExtra("detail",detail);
+                        intent.putExtra("startdate",startdate);
+                        intent.putExtra("finishdate",finishdate);
+                        startActivity(intent);
+                    }
+                });
+
 
             }
 
