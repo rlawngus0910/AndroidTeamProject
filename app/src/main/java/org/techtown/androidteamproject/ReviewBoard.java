@@ -47,7 +47,7 @@ public class ReviewBoard extends AppCompatActivity {
 
         if(title.length()>0&&content.length()>0){
             user= FirebaseAuth.getInstance().getCurrentUser();
-            ReviewInfo reviewInfo = new ReviewInfo(title,content,user.getUid());
+            ReviewInfo reviewInfo = new ReviewInfo(title,content);
             uploader(reviewInfo);
         }
         else{
@@ -63,7 +63,7 @@ public class ReviewBoard extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG,"DocumentSnapshot written with ID: "+documentReference.getId());
-                        startToast("리뷰를 입력해주세요.");
+                        startToast("리뷰 작성 완료.");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
