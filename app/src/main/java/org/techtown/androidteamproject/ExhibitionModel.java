@@ -1,5 +1,7 @@
 package org.techtown.androidteamproject;
 
+import java.util.Date;
+
 public class ExhibitionModel {
     private String name;
     private String location;
@@ -8,6 +10,8 @@ public class ExhibitionModel {
     private String finishdate;
     private String img;
     private String detail;
+    private Date start;
+    private Date finish;
     private String genre;
 
     public String getName() {
@@ -63,6 +67,14 @@ public class ExhibitionModel {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public Date getStart(){
+        return start;
+    }
+
+    public Date getFinish() {
+        return finish;
     }
 
     public String getGenre() {

@@ -2,52 +2,59 @@ package org.techtown.androidteamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class SeoulExhibition extends Fragment {
+public class FinishDateExhibition extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
-    private RecyclerView mFirestoreList;
+    private RecyclerView DateExhibitionList;
     private FirestoreRecyclerAdapter adapter;
-
+    private Date stdate;
+    private Date fndate;
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_seoul_exhibition, container,false);
+        setContentView(R.layout.activity_printing_date_exhibtion);
+        setTitle("날짜별 전시회");
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mFirestoreList = (RecyclerView) view.findViewById(R.id.firestore_list);
-        mFirestoreList.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        DateExhibitionList = (RecyclerView) findViewById(R.id.dateex_list);
+        DateExhibitionList.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
 
-        Query query = firebaseFirestore.collection("Exhibition").whereEqualTo("location","서울");
+        Intent intent = getIntent();
+        String startDate = intent.getStringExtra("startDate");
+        String finishDate = intent.getStringExtra("finishDate");
+        try {
+            stdate = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            fndate = new SimpleDateFormat("yyyy-MM-dd").parse(finishDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Query query = firebaseFirestore.collection("Exhibition").orderBy("finish").startAt(stdate).endAt(fndate);
         FirestoreRecyclerOptions<ExhibitionModel> options = new FirestoreRecyclerOptions.Builder<ExhibitionModel>()
                 .setQuery(query, ExhibitionModel.class).build();
-
         adapter = new FirestoreRecyclerAdapter<ExhibitionModel, CustomViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CustomViewHolder holder, int position, @NonNull ExhibitionModel model) {
@@ -64,7 +71,7 @@ public class SeoulExhibition extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity(),ExhibitionDetail.class);
+                        Intent intent = new Intent(getApplicationContext(),ExhibitionDetail.class);
                         intent.putExtra("title", name);
                         intent.putExtra("place",place);
                         intent.putExtra("poster",poster);
@@ -74,6 +81,7 @@ public class SeoulExhibition extends Fragment {
                         startActivity(intent);
                     }
                 });
+
             }
 
             @NonNull
@@ -83,20 +91,17 @@ public class SeoulExhibition extends Fragment {
                 return new CustomViewHolder((view));
             }
         };
-        mFirestoreList.setHasFixedSize(true);
-        mFirestoreList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mFirestoreList.setAdapter(adapter);
-        return view;
-
+        DateExhibitionList.setHasFixedSize(true);
+        DateExhibitionList.setLayoutManager(new LinearLayoutManager(this));
+        DateExhibitionList.setAdapter(adapter);
     }
-
     private class CustomViewHolder extends RecyclerView.ViewHolder{
         private TextView list_name;
         private TextView list_place;
         private TextView list_date;
         private ImageView list_image;
 
-        public CustomViewHolder(View itemView){
+        public CustomViewHolder(@NonNull View itemView){
             super(itemView);
             list_name = itemView.findViewById(R.id.list_name);
             list_place = itemView.findViewById(R.id.list_place);
@@ -107,12 +112,15 @@ public class SeoulExhibition extends Fragment {
     @Override
     public void onStop(){
         super.onStop();
-        adapter.stopListening();
+        if(adapter!=null)
+            adapter.stopListening();
     }
 
     @Override
     public void onStart(){
         super.onStart();
-        adapter.startListening();
+        if(adapter!=null)
+            adapter.startListening();
     }
 }
+

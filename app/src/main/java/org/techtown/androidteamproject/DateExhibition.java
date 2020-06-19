@@ -1,146 +1,115 @@
 package org.techtown.androidteamproject;
 
 
+import android.content.Intent;
+import android.os.Bundle;
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.applikeysolutions.cosmocalendar.utils.SelectionType;
+import com.applikeysolutions.cosmocalendar.view.CalendarView;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.TextView;
-
-public class DateExhibition extends Activity {
 
 
-    private TextView tvDate;
-    private GridAdapter gridAdapter;
-    private ArrayList<String> dayList;
-    private GridView gridView;
-    private Calendar mCal;
+public class DateExhibition extends AppCompatActivity {
+
+    CalendarView calendarView;
+    private Date stdate;
+    private Date fndate;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.date_exhibition);
-
-        tvDate = (TextView)findViewById(R.id.tv_date);
-        gridView = (GridView)findViewById(R.id.gridview);
-
-
-        long now = System.currentTimeMillis();
-        final Date date = new Date(now);
-        final SimpleDateFormat curYearFormat = new SimpleDateFormat("yyyy", Locale.KOREA);
-        final SimpleDateFormat curMonthFormat = new SimpleDateFormat("MM", Locale.KOREA);
-        final SimpleDateFormat curDayFormat = new SimpleDateFormat("dd", Locale.KOREA);
-
-
-        tvDate.setText(curYearFormat.format(date) + "/" + curMonthFormat.format(date));
-
-
-        dayList = new ArrayList<String>();
-        dayList.add("일");
-        dayList.add("월");
-        dayList.add("화");
-        dayList.add("수");
-        dayList.add("목");
-        dayList.add("금");
-        dayList.add("토");
-
-        mCal = Calendar.getInstance();
-
-
-        mCal.set(Integer.parseInt(curYearFormat.format(date)), Integer.parseInt(curMonthFormat.format(date)) - 1, 1);
-        int dayNum = mCal.get(Calendar.DAY_OF_WEEK);
-        for (int i = 1; i < dayNum; i++) {
-            dayList.add("");
-        }
-        setCalendarDate(mCal.get(Calendar.MONTH) + 1);
-
-        gridAdapter = new GridAdapter(getApplicationContext(), dayList);
-        gridView.setAdapter(gridAdapter);
-
+        setContentView(R.layout.date_exhibition2);
+        setTitle("날짜 선택");
+        Toast.makeText(this,"시작날짜와 종료날짜를 선택하세요.",Toast.LENGTH_LONG).show();
+        calendarView = (CalendarView)findViewById(R.id.calendar_view);
+        calendarView.setSelectionType(SelectionType.RANGE);
+        calendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
     }
 
-
-    private void setCalendarDate(int month) {
-        mCal.set(Calendar.MONTH, month - 1);
-
-        for (int i = 0; i < mCal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
-            dayList.add("" + (i + 1));
-        }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.date_menu,menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.startdatelist:
+                List<Calendar> days = calendarView.getSelectedDates();
+                for(int i=0;i<days.size();i++) {
+                    Calendar calendar = days.get(i);
+                    if(i==0) {
+                        stdate = new Date(calendar.getTimeInMillis());
 
-    private class GridAdapter extends BaseAdapter {
+                    }
+                    else if(i==(days.size()-1)) {
+                        fndate = new Date(calendar.getTimeInMillis());
+                    }
+                }
+                if(stdate == null || fndate == null)
+                    Toast.makeText(this, "날짜를 선택해주세요.", Toast.LENGTH_LONG).show();
+                else {
+                    String st = new SimpleDateFormat("yyyy-MM-dd").format(stdate);
+                    String fn = new SimpleDateFormat("yyyy-MM-dd").format(fndate);
 
-        private final List<String> list;
+                    Intent intent2 = new Intent(getApplicationContext(), StartDateExhibition.class);
+                    intent2.putExtra("startDate",st);
+                    intent2.putExtra("finishDate",fn);
 
-        private final LayoutInflater inflater;
+                    startActivity(intent2);
+                    Toast.makeText(this, "전시회의 시작 날짜로 조회합니다.", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            case R.id.finishdatelist:
+                List<Calendar> days2 = calendarView.getSelectedDates();
+                for(int i=0;i<days2.size();i++) {
+                    Calendar calendar = days2.get(i);
+                    if(i==0) {
+                        stdate = new Date(calendar.getTimeInMillis());
 
+                    }
+                    else if(i==(days2.size()-1)) {
+                        fndate = new Date(calendar.getTimeInMillis());
+                    }
+                }
+                if(stdate == null || fndate == null)
+                    Toast.makeText(this, "날짜를 선택해주세요.", Toast.LENGTH_LONG).show();
+                else {
+                    String st = new SimpleDateFormat("yyyy-MM-dd").format(stdate);
+                    String fn = new SimpleDateFormat("yyyy-MM-dd").format(fndate);
 
-        public GridAdapter(Context context, List<String> list) {
-            this.list = list;
-            this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    Intent intent2 = new Intent(getApplicationContext(), FinishDateExhibition.class);
+                    intent2.putExtra("startDate", st);
+                    intent2.putExtra("finishDate", fn);
+
+                    startActivity(intent2);
+                    Toast.makeText(this, "전시회의 종료 날짜로 조회합니다.", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
-
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public String getItem(int position) {
-            return list.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            ViewHolder holder = null;
-
-            if (convertView == null) {
-                convertView = inflater.inflate(R.layout.date_exhibition_gridview, parent, false);
-                holder = new ViewHolder();
-
-                holder.tvItemGridView = (TextView)convertView.findViewById(R.id.tv_item_gridview);
-
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder)convertView.getTag();
-            }
-            holder.tvItemGridView.setText("" + getItem(position));
-
-
-            mCal = Calendar.getInstance();
-
-            Integer today = mCal.get(Calendar.DAY_OF_MONTH);
-            String sToday = String.valueOf(today);
-            if (sToday.equals(getItem(position))) {
-                holder.tvItemGridView.setTextColor(getResources().getColor(R.color.design_default_color_primary));
-            }
-            return convertView;
-        }
-    }
-
-    private class ViewHolder {
-        TextView tvItemGridView;
     }
 
 }

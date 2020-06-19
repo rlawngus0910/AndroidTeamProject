@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/startdatelist"
+        android:title="시작 날짜로 보기"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/finishdatelist"
+        android:title="종료 날짜로 보기"
+        app:showAsAction="never"/>
+
+</menu>

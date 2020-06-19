@@ -83,24 +83,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.login_success: //로그인 성공
-                mAuth.signInWithEmailAndPassword(mEmail.getText().toString(), mPassword.getText().toString())
+                /*mAuth.signInWithEmailAndPassword(mEmail.getText().toString(), mPassword.getText().toString())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    if(user!=null) {
+                                    if(user!=null) {*/
                                         Toast.makeText(MainActivity.this, "로그인 성공",
                                                 Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
                                         startActivity(intent);
-                                    }
+                                    /*}
                                 } else {
                                     Toast.makeText(MainActivity.this, "로그인 실패",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        });
+                        });*/
                 break;
 
 
