@@ -41,13 +41,18 @@
         android:textSize="22dp"
         android:inputType="textPassword" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="23dp">
+
     <Button
         android:id="@+id/login_success"
-        android:layout_width="130dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="5dp"
         android:background="@drawable/corner_shape"
         android:fontFamily="@font/fontfile"
         android:text="로그인"
@@ -55,49 +60,45 @@
         android:textColor="#8D8D8D"
         android:textStyle="bold"
         android:onClick="onClick" />
+
     <Button
         android:id="@+id/sign_logout"
-        android:layout_width="130dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="6dp"
         android:background="@drawable/corner_shape"
         android:fontFamily="@font/fontfile"
+        android:onClick="onClick"
         android:text="로그아웃"
         android:textAllCaps="false"
         android:textColor="#8D8D8D"
-        android:textStyle="bold"
-        android:onClick="onClick"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/sign_find"
-        android:layout_width="115dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="6dp"
         android:background="@drawable/corner_shape"
         android:fontFamily="@font/fontfile"
         android:onClick="onClick"
         android:text="PW 초기화"
         android:textAllCaps="false"
         android:textColor="#8D8D8D"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/login_signup"
         android:fontFamily="@font/fontfile"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
+        android:layout_marginLeft="6dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="6dp"
         android:background="@drawable/corner_shape"
         android:text="회원가입"
         android:textAllCaps="false"
         android:textColor="#8D8D8D"
         android:textStyle="bold"
-        android:onClick="onClick" />
+        android:onClick="onClick"/>
+    </LinearLayout>
 
 </LinearLayout>

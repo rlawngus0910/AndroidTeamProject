@@ -6,55 +6,61 @@
     android:orientation="vertical"
     android:background="@drawable/logotitleee">
 
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="grokonez.com"
-        android:textSize="24sp" />
 
     <TextView
+        android:fontFamily="@font/fontfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="Forgot your password?"
-        android:textSize="20dp" />
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        android:text="비밀 번호 재설정"
+        android:textColor="#333333"
+        android:textSize="29dp" />
 
     <TextView
+        android:fontFamily="@font/fontfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:padding="10dp"
-        android:text="To reset password, enter your email, press the button and check mail to follow instruction."
-        android:textSize="14dp" />
+        android:textColor="#575757"
+        android:text="비밀번호 재설정을 위해, 이메일을 입력하고 , 버튼을 누르면 해당 이메일에서 비밀번호 재설정 가능"
+        android:textSize="17dp" />
 
     <EditText
+        android:fontFamily="@font/fontfile"
         android:id="@+id/edt_reset_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Your email here"
+        android:hint="이메일 입력"
         android:inputType="textEmailAddress" />
 
     <Button
+        android:fontFamily="@font/fontfile"
         android:id="@+id/btn_reset_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Reset Password" />
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:layout_gravity="center"
+        android:text="비밀번호재설정하기"
+        android:textColor="#BA2B2B"
+        android:background="@drawable/corner_shape"/>
 
     <Button
+        android:fontFamily="@font/fontfile"
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@null"
-        android:text="BACK"
-        android:textColor="@android:color/holo_blue_dark" />
+        android:layout_marginTop="30dp"
+        android:text="전단계로"
+        android:textColor="#575757"
+        android:layout_gravity="center"
+        android:background="@drawable/corner_shape"/>
 
 </LinearLayout>
