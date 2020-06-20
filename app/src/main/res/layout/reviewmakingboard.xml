@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fontFamily="@font/fontfile">
 
 
     <TextView
@@ -11,7 +12,8 @@
         android:layout_height="wrap_content"
         android:text="With Me 후기 작성"
         android:textAlignment="center"
-        android:textSize="34sp" />
+        android:textSize="34sp"
+        android:fontFamily="@font/fontfile"/>
 
     <EditText
         android:id="@+id/review_title"
@@ -19,7 +21,8 @@
         android:layout_height="wrap_content"
         android:hint="제목"
         android:inputType="textPersonName"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:fontFamily="@font/fontfile"/>
 
     <EditText
         android:id="@+id/review_content"
@@ -27,20 +30,23 @@
         android:layout_height="393dp"
         android:inputType="textMultiLine"
         android:hint="후기를 써주세요!!"
-        android:padding="20dp" />
+        android:padding="20dp"
+        android:fontFamily="@font/fontfile"/>
 
     <Button
         android:id="@+id/reviewcomplete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="작성" />
+        android:text="작성"
+        android:fontFamily="@font/fontfile"/>
 
     <Button
         android:id="@+id/goback_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="뒤로 가기" />
+        android:text="뒤로 가기"
+        android:fontFamily="@font/fontfile"/>
 
 
 </LinearLayout>

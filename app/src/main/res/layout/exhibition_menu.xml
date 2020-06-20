@@ -14,6 +14,7 @@
         app:layout_constraintGuide_end="63dp" />
 
     <TextView
+        android:fontFamily="@font/fontfile"
         android:id="@+id/location_exhibition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:fontFamily="@font/fontfile"
         android:id="@+id/date_exhibition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +41,7 @@
         app:layout_constraintVertical_bias="0.379" />
 
     <TextView
+        android:fontFamily="@font/fontfile"
         android:id="@+id/recommand_exhibition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/date_exhibition" />
 
     <TextView
+        android:fontFamily="@font/fontfile"
         android:id="@+id/board"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

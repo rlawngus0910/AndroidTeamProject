@@ -3,6 +3,7 @@ package org.techtown.androidteamproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitysignup);
+
 
         mEmail = findViewById(R.id.login_email);
         mPassword = findViewById(R.id.login_password);

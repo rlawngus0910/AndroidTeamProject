@@ -2,7 +2,6 @@ package org.techtown.androidteamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,32 +30,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.login_signup).setOnClickListener((View.OnClickListener) this);
         findViewById(R.id.login_success).setOnClickListener((View.OnClickListener) this);
         findViewById(R.id.sign_logout).setOnClickListener((View.OnClickListener) this);
-        findViewById(R.id.sign_reset).setOnClickListener((View.OnClickListener) this);
+        findViewById(R.id.sign_find).setOnClickListener((View.OnClickListener) this);
     }
 
-    //비밀번호 재설정
-    private void resetPassword() {
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String emailaddress = mEmail.getText().toString();
-        auth.sendPasswordResetEmail(emailaddress)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Check Your Email", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+
 
 
 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.sign_find:  //resetpassword
-                resetPassword();
+                Toast.makeText(MainActivity.this, "찾기으로 이동",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(getApplicationContext(),ResetPasswordActivity.class);
+                startActivity(intent2);
+
                 break;
 
             case R.id.sign_logout:   //logout

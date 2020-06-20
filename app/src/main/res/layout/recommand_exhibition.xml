@@ -13,5 +13,6 @@
         android:text="추천 전시회 화면"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/fontfile"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

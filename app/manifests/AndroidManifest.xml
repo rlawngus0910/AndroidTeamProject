@@ -19,15 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".Member" />
         <activity android:name=".ExhibitionMenu" />
         <activity android:name=".LocationExhibition" />
         <activity android:name=".DateExhibition" />
         <activity android:name=".RecommandExhibition" />
         <activity android:name=".Board" />
-        <activity android:name=".StartDateExhibition"/>
-        <activity android:name=".FinishDateExhibition"/>
+
 
         <activity android:name=".ReviewList" />
         <activity android:name=".ReviewBoard" />

@@ -28,6 +28,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
+            android:fontFamily="@font/fontfile"
             android:id="@+id/detail_poster"
             android:layout_width="409dp"
             android:layout_height="549dp" />
@@ -41,6 +42,7 @@
             android:background="@drawable/rounded">
 
             <TextView
+                android:fontFamily="@font/fontfile"
                 android:id="@+id/detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,6 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:fontFamily="@font/fontfile"
                 android:id="@+id/detail_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,6 +66,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/detail_title" />
 
             <TextView
+                android:fontFamily="@font/fontfile"
                 android:id="@+id/detail_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/detail_place" />
 
             <TextView
+                android:fontFamily="@font/fontfile"
                 android:id="@+id/detail_information"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"

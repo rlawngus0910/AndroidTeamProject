@@ -29,7 +29,7 @@ public class Member extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private Button mBtn;
-    private EditText mEmailText, mPasswordText;
+    private EditText mEmailText, mPasswordText,mPhoneText,mBirthText;
     private int ival;
     public String glob="";
     static SharedPreferences sPref;
@@ -46,42 +46,66 @@ public class Member extends AppCompatActivity {
         mBtn = findViewById(R.id.member_btn);
         mEmailText = findViewById(R.id.Email);
         mPasswordText = findViewById(R.id.Password);
+        mPhoneText = findViewById(R.id.Phone);
+        mBirthText = findViewById(R.id.Birth);
+
         rbMain = (RadioGroup) findViewById(R.id.radiogr);
         rb1 = (RadioButton)findViewById(R.id.radiobtn1);
         rb2 = (RadioButton)findViewById(R.id.radiobtn2);
         rb3 = (RadioButton)findViewById(R.id.radiobtn3);
         rb4 = (RadioButton)findViewById(R.id.radiobtn4);
 
+
+
         mBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.createUserWithEmailAndPassword(mEmailText.getText().toString(),
-                        mPasswordText.getText().toString())
-                        .addOnCompleteListener(Member.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                Log.i(this.getClass().getName(),"onComplete실행");
-                                if (task.isSuccessful()) {//User정보를 넣어줘야하니까
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
-                                    startActivity(intent);
-                                    if (user != null) {
-                                        Map<String, Object> userMap = new HashMap<>();
-                                        userMap.put(FirebaseID.documentId, user.getUid()); //유저아이디
-                                        userMap.put(FirebaseID.email, mEmailText.getText().toString());  //유저이메일
-                                        userMap.put(FirebaseID.password, mPasswordText.getText().toString()); //유저패스워드
-                                        userMap.put(FirebaseID.genre,glob); //유저장르genre
-                                        mStore.collection(FirebaseID.user).document(user.getUid()).set(userMap, SetOptions.merge());
-                                        finish();
+                if((mEmailText.getText().length())==0){
+                    Toast.makeText(Member.this, "아이디를 입력하세요",
+                            Toast.LENGTH_SHORT).show();
+                }
+               else if((mPasswordText.getText().length())==0){
+                    Toast.makeText(Member.this, "비밀번호를 입력하세요",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if((mPhoneText.getText().length())==0){
+                    Toast.makeText(Member.this, "전화번호를 입력하세요",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if((mBirthText.getText().length())==0){
+                    Toast.makeText(Member.this, "생년월일을 입력하세요",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                    mAuth.createUserWithEmailAndPassword(mEmailText.getText().toString(),
+                            mPasswordText.getText().toString())
+                            .addOnCompleteListener(Member.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    Log.i(this.getClass().getName(), "onComplete실행");
+                                    if (task.isSuccessful()) {//User정보를 넣어줘야하니까
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
+                                        startActivity(intent);
+                                        if (user != null) {
+                                            Map<String, Object> userMap = new HashMap<>();
+                                            userMap.put(FirebaseID.documentId, user.getUid()); //유저아이디
+                                            userMap.put(FirebaseID.email, mEmailText.getText().toString());  //유저이메일
+                                            userMap.put(FirebaseID.password, mPasswordText.getText().toString()); //유저패스워드
+                                            userMap.put(FirebaseID.genre, glob); //유저장르genre
+                                            mStore.collection(FirebaseID.user).document(user.getUid()).set(userMap, SetOptions.merge());
+                                            finish();
+                                        }
+                                    } else {
+                                        Toast.makeText(Member.this, "Sign Up Error",
+                                                Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
+                                        startActivity(intent);
                                     }
-                                } else {
-                                    Toast.makeText(Member.this, "Sign Up Error",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), ExhibitionMenu.class);
-                                    startActivity(intent);
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
 

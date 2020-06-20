@@ -19,7 +19,8 @@
             android:layout_alignParentStart="true"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:fontFamily="@font/fontfile"/>
 
         <TextView
             android:id="@+id/text_view_reviewer"
@@ -27,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:text="Reviewer"
-            android:layout_below="@id/text_view_title"/>
+            android:layout_below="@id/text_view_title"
+            android:fontFamily="@font/fontfile"/>
 
         <TextView
             android:id="@+id/text_view_description"
@@ -35,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:text="Description"
-            android:layout_below="@id/text_view_reviewer"/>
+            android:layout_below="@id/text_view_reviewer"
+            android:fontFamily="@font/fontfile"/>
 
     </RelativeLayout>
 
