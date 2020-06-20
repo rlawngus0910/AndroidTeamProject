@@ -33,16 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.sign_logout).setOnClickListener((View.OnClickListener) this);
         findViewById(R.id.sign_reset).setOnClickListener((View.OnClickListener) this);
     }
-    //자동로그인
-    @Override
-    protected void onStart(){
-        super.onStart();
-        FirebaseUser user=mAuth.getCurrentUser();
-        if(user!=null){
-            Toast.makeText(MainActivity.this, "자동로그인"+user.getUid(),
-                    Toast.LENGTH_SHORT).show();
-        }
-    }
 
     //비밀번호 재설정
     private void resetPassword() {

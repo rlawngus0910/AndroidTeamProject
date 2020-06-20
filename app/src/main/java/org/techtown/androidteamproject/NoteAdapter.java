@@ -29,6 +29,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<ReviewInfo, NoteAdapte
     protected void onBindViewHolder(@NonNull NoteHolder holder, int position, @NonNull ReviewInfo model) {
         holder.textViewTitle.setText(model.getTitle());
         holder.textViewContent.setText(model.getContent());
+        holder.textViewReviewer.setText(model.getReviewer());
     }
 
     @NonNull
@@ -42,11 +43,13 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<ReviewInfo, NoteAdapte
     class NoteHolder extends RecyclerView.ViewHolder{
         TextView textViewTitle;
         TextView textViewContent;
+        TextView textViewReviewer;
 
         public NoteHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle=itemView.findViewById(R.id.text_view_title);
             textViewContent=itemView.findViewById(R.id.text_view_description);
+            textViewReviewer=itemView.findViewById(R.id.text_view_reviewer);
         }
     }
 }

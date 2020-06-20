@@ -44,10 +44,11 @@ public class ReviewBoard extends AppCompatActivity {
     private void reviewUpdate(){
         final String title = ((EditText)findViewById(R.id.review_title)).getText().toString();
         final String content = ((EditText)findViewById(R.id.review_content)).getText().toString();
+        final String reviewer = ((EditText)findViewById(R.id.review_content)).getText().toString();
 
         if(title.length()>0&&content.length()>0){
             user= FirebaseAuth.getInstance().getCurrentUser();
-            ReviewInfo reviewInfo = new ReviewInfo(title,content);
+            ReviewInfo reviewInfo = new ReviewInfo(title,content,reviewer);
             uploader(reviewInfo);
         }
         else{
