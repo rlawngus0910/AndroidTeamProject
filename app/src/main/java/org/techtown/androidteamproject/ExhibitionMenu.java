@@ -1,10 +1,14 @@
 package org.techtown.androidteamproject;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class ExhibitionMenu extends AppCompatActivity {
@@ -17,6 +21,14 @@ public class ExhibitionMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exhibition_menu);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            Log.e("로그", user.getEmail());
+        } else {
+            // No user is signed in
+        }
     }
 
 

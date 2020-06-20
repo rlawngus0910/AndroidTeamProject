@@ -25,8 +25,10 @@ public class ReviewBoard extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reviewmakingboard);
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         findViewById(R.id.reviewcomplete).setOnClickListener(onClickListener);
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener(){
@@ -44,7 +46,7 @@ public class ReviewBoard extends AppCompatActivity {
     private void reviewUpdate(){
         final String title = ((EditText)findViewById(R.id.review_title)).getText().toString();
         final String content = ((EditText)findViewById(R.id.review_content)).getText().toString();
-        final String reviewer = ((EditText)findViewById(R.id.review_content)).getText().toString();
+        final String reviewer = user.getEmail();
 
         if(title.length()>0&&content.length()>0){
             user= FirebaseAuth.getInstance().getCurrentUser();

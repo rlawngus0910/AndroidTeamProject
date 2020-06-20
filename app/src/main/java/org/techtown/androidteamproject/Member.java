@@ -126,9 +126,6 @@ public class Member extends AppCompatActivity {
 
             }
         });
-        Intent intent=new Intent(getApplicationContext(),RecommandExhibition.class);
-        intent.putExtra("genre",glob);
-        startActivity(intent);
     }
 
     @Override
