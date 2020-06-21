@@ -80,15 +80,7 @@ public class ReviewBoard extends AppCompatActivity {
 
     private void startToast(String msg){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show();}
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.goback_btn:
-                Intent intent = new Intent(getApplicationContext(),Board.class);
-                startActivity(intent);
-                break;
 
-        }
-    }
 }
 
 
