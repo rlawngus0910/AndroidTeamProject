@@ -19,6 +19,7 @@ public class ReviewList extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reviewlistboard);
+        setTitle("리뷰 보기");
 
         setUpRecyclerView();
     }

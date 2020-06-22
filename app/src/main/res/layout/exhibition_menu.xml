@@ -14,55 +14,59 @@
         app:layout_constraintGuide_end="63dp" />
 
     <TextView
-        android:fontFamily="@font/fontfile"
         android:id="@+id/location_exhibition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="지역별 전시회"
         android:clickable="true"
         android:onClick="onClick"
+        android:textColor="#000000"
+        android:text="지역별 전시회"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/date_exhibition"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/fontfile"/>
 
     <TextView
-        android:fontFamily="@font/fontfile"
         android:id="@+id/date_exhibition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="날짜별 전시회"
+        android:layout_marginTop="259dp"
         android:clickable="true"
+        android:textColor="#000000"
         android:onClick="onClick"
+        android:text="날짜별 전시회"
         android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
+        android:fontFamily="@font/fontfile"/>
 
     <TextView
-        android:fontFamily="@font/fontfile"
         android:id="@+id/recommand_exhibition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:text="추천 전시회"
+        android:layout_marginTop="100dp"
         android:clickable="true"
+        android:textColor="#000000"
         android:onClick="onClick"
+        android:text="추천 전시회"
         android:textSize="35sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/date_exhibition" />
+        app:layout_constraintTop_toBottomOf="@+id/date_exhibition"
+        android:fontFamily="@font/fontfile"/>
 
     <TextView
-        android:fontFamily="@font/fontfile"
         android:id="@+id/board"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="게시판"
         android:clickable="true"
+        android:textColor="#000000"
         android:onClick="onClick"
+        android:text="게시판"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/recommand_exhibition" />
+        app:layout_constraintTop_toBottomOf="@+id/recommand_exhibition"
+        app:layout_constraintVertical_bias="0.415"
+        android:fontFamily="@font/fontfile"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

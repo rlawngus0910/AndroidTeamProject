@@ -6,10 +6,9 @@
     tools:context=".JejuExhibition">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:fontFamily="@font/fontfile"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firestore_list7"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="제주도 전시회" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

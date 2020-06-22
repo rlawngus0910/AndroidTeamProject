@@ -6,10 +6,8 @@
     tools:context=".GyeongsangExhibition">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:fontFamily="@font/fontfile"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/firestore_list4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="경상도 전시회" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

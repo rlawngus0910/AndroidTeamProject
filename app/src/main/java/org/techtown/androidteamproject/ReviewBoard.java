@@ -25,6 +25,7 @@ public class ReviewBoard extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reviewmakingboard);
+        setTitle("리뷰 작성");
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         findViewById(R.id.reviewcomplete).setOnClickListener(onClickListener);

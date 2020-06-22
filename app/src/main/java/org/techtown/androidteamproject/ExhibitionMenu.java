@@ -5,17 +5,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class ExhibitionMenu extends AppCompatActivity {
-    TextView location_exhibit;
-    TextView date_exhibit;
-    TextView recommand_exhibit;
-    TextView board;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

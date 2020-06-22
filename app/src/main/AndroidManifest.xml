@@ -12,20 +12,26 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".IntroActivity">
+        <activity android:name=".IntroActivity"
+            android:theme="@style/NoTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".Member" />
-        <activity android:name=".ExhibitionMenu" />
+        <activity android:name=".MainActivity"
+            android:theme="@style/NoTheme" />
+        <activity android:name=".ResetPasswordActivity"
+            android:theme="@style/NoTheme"/>
+        <activity android:name=".Member"
+            android:theme="@style/NoTheme"/>
+        <activity android:name=".ExhibitionMenu"
+            android:theme="@style/NoTheme"/>
         <activity android:name=".LocationExhibition" />
         <activity android:name=".DateExhibition" />
         <activity android:name=".RecommandExhibition" />
-        <activity android:name=".Board" />
+        <activity android:name=".Board"
+            android:theme="@style/NoTheme"/>
         <activity android:name=".StartDateExhibition"/>
         <activity android:name=".FinishDateExhibition"/>
 

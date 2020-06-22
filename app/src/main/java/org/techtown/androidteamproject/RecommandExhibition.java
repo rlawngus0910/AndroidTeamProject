@@ -31,7 +31,6 @@ import com.squareup.picasso.Picasso;
 
 public class RecommandExhibition extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
-    //private String gen;
     private FirestoreRecyclerAdapter adapter;
     private RecyclerView ResultList;
 
@@ -40,9 +39,11 @@ public class RecommandExhibition extends AppCompatActivity {
         setContentView(R.layout.recommand_exhibition);
         setTitle("추천 전시회");
 
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         ResultList = (RecyclerView) findViewById(R.id.recommandlist);
         ResultList.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
+
         firebaseFirestore = FirebaseFirestore.getInstance();
         DocumentReference docRef = firebaseFirestore.collection("user").document(user.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -96,6 +97,7 @@ public class RecommandExhibition extends AppCompatActivity {
                     ResultList.setAdapter(adapter);
 
                     onStart();
+
 
 
 
